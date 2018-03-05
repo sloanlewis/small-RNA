@@ -10,7 +10,7 @@ shift
 #SBATCH --output=alignment.stdout
 #SBATCH --mail-user=useremail@address.com
 #SBATCH --mail-type=ALL
-#SBATCH --job-name="ATAC-Seq Alignment"
+#SBATCH --job-name="small RNA trimming - QIASeq"
 #SBATCH -p intel # This is the default partition, you can use any of the following; intel, batch, highmem, gpu
 
 #Load the packages
