@@ -11,8 +11,13 @@ bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
 multicoreParam <- MulticoreParam(workers=4); register(multicoreParam); registered()
 
 #Counting reads - assuming strand non-specific. inter.feature=FALSE as pre- and mature miRNA positions overlap
-countDFmiR <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union", ignore.strand=TRUE, inter.feature=FALSE, singleEnd=TRUE))
+countemiR <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union", ignore.strand=TRUE, inter.feature=FALSE, singleEnd=TRUE))
+countDFmiR <- sapply(seq(along=countemiR), function(x) assays(countemiR[[x]])$counts)
+rownames(countDFmiR) <- names(rowRanges(countemiR[[1]]))
+colnames(countDFmiR) <- names(outpaths(args))
 
 #Output counts and RPKM
 write.table(assays(countDFmiR)$counts, "results/countDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
 write.table(rpkmDFmiR, "results/rpkmDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
+
+#Sample outlier analysis
