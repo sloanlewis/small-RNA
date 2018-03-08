@@ -5,7 +5,7 @@ targets <- read.delim("targets.txt", comment="#")
 cmp <- readComp(file="targets.txt", format="matrix", delim="-")
 
 #Running edgeR
-edgeDF <- run_edgeR(countDF=countDF, targets=targets, cmp=cmp[[1]], independent=TRUE, mdsplot="")
+edgeDF <- run_edgeR(countDF=countDFmiR, targets=targets, cmp=cmp[[1]], independent=TRUE, mdsplot="")
 desc <- read.delim("Rhesus_annotations.xls", row.names=1)
 edgeDF <- cbind(edgeDF, desc[rownames(edgeDF),])
 write.table(edgeDF, "./results/edgeRglm_allcomp.xls", quote=FALSE, sep="\t", col.names = NA)
