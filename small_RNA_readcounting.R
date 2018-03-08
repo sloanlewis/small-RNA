@@ -26,7 +26,7 @@ write.table(rpkmDFmiR, "./results/rpkmDFmiR.xls", col.names=NA, quote=FALSE, sep
 #Sample outlier analysis
 library(ape)
 rpkmDFmiR <- read.delim("./results/rpkmDFmiR.xls", row.names=1, check.names=FALSE)[,-19]
-rpkmDFmiR <- rpkmDFemiR[rowMeans(rpkmDFmiR) > 50,]
+rpkmDFmiR <- rpkmDFmiR[rowMeans(rpkmDFmiR) > 50,]
 d <- cor(rpkmDFmiR, method="spearman")
 hc <- hclust(as.dist(1-d))
 pdf("./results/sample_tree.pdf")
