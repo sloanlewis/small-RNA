@@ -20,7 +20,7 @@ colnames(countDFmiR) <- names(outpaths(args))
 rpkmDFmiR <- apply(countDFmiR, 2, function(x) returnRPKM(counts=x, ranges=eByg))
                     
 #Output counts and RPKM
-write.table(assays(countDFmiR)$counts, "./results/countDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
+write.table(countDFmiR$counts, "./results/countDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
 write.table(rpkmDFmiR, "./results/rpkmDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
 
 #Sample outlier analysis
