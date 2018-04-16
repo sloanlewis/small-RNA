@@ -7,7 +7,7 @@ targets <- read.delim("targets.txt", comment.char = "#")
 #Check if targets file is correct
 targets
 #Create args
-args <- systemArgs(sysma="tophat.param", mytargets="targets.txt")
+args <- systemArgs(sysma="bowtie-smallRNA.param", mytargets="targets.txt")
 moduleload(modules(args))
 
 #Check if alignment files exist
